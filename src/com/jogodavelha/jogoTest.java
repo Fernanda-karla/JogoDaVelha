@@ -12,5 +12,12 @@ class jogoTest {
 		assertFalse("O Jogo iniciou finalizado", jogo.acabou());
 		
 	}
+	
+	@Test
+	public void definirPrimeiroJogador() {
+		Jogo jogo = new Jogo();
+		jogo.setMarcaPrimeiroJogadorX(true);
+		assertTrue(jogo.isMarcaPrimeiroJogadorX());
+	}
 
 }
