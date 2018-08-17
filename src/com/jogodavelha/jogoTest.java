@@ -34,5 +34,13 @@ class jogoTest {
 		jogo.setMarcaPrimeiroJogadorX(false); //o
 		assertFalse(jogo.isMarcaPrimeiroJogadorX());
 	}
+	
+	@Test
+	public void desenharPrimeiraMarca() {
+		novoJogo();
+		jogo.setMarcaPrimeiroJogadorX(true);
+		jogo.desenharMarca(1, 0);
+		assertTrue(jogo.isMarcaXNaPosicao(1, 0));
+	}
 
 }
