@@ -5,19 +5,34 @@ import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
 class jogoTest {
+	
+	private Jogo jogo;
+	
+	@Before
+	public void novoJogo() {
+		jogo = new Jogo();
+	}
 
 	@Test
 	public void criarJogo() {
-		Jogo jogo = new Jogo();
+		novoJogo();
 		assertFalse("O Jogo iniciou finalizado", jogo.acabou());
 		
 	}
 	
 	@Test
 	public void definirPrimeiroJogador() {
-		Jogo jogo = new Jogo();
+		novoJogo();
 		jogo.setMarcaPrimeiroJogadorX(true);
 		assertTrue(jogo.isMarcaPrimeiroJogadorX());
+	}
+	
+	@Test
+	public void definirPrimeiroJogadorDeNovo() {
+		novoJogo();
+		jogo.setMarcaPrimeiroJogadorX(true); //x
+		jogo.setMarcaPrimeiroJogadorX(false); //o
+		assertFalse(jogo.isMarcaPrimeiroJogadorX());
 	}
 
 }
