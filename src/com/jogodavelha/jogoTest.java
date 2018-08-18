@@ -80,5 +80,12 @@ class jogoTest {
 		jogo.setMarcaPrimeiroJogadorX(true);
 		jogo.isMarcaXNaPosicao(-1, 1);
 	}
+	
+	@Test(expected=ExcecaoJogoDaVelha.class)
+	public void definirPrimeiroJogadorAposInicioDoJogo() {
+		jogo.setMarcaPrimeiroJogadorX(true);
+		jogo.desenharMarca(1, 0);
+		jogo.setMarcaPrimeiroJogadorX(true);
+	}
 
 }
