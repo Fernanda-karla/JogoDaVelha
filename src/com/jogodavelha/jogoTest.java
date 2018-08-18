@@ -1,7 +1,6 @@
 package com.jogodavelha;
 
 import static org.junit.Assert.*;
-
 import org.junit.jupiter.api.Test;
 
 class jogoTest {
@@ -42,5 +41,18 @@ class jogoTest {
 		jogo.desenharMarca(1, 0);
 		assertTrue(jogo.isMarcaXNaPosicao(1, 0));
 	}
+	
+	@Test(expected=ExcecaoJogoDaVelha.class)
+	public void desenharMarcaEmUmaCelulaOcupada() {
+		jogo.setMarcaPrimeiroJogadorX(true);
+		jogo.desenharMarca(0, 1);
+	    jogo.desenharMarca(0, 1);
+	}
+	
+	@Test(expected=ExcecaoJogoDaVelha.class)
+	public void desenharMarcaEmUmaColunaErrada() {
+		jogo.setMarcaPrimeiroJogadorX(false);
+		jogo.desenharMarca(1, 3);
+	  }
 
 }
