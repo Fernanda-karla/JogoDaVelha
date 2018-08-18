@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 import org.junit.jupiter.api.Test;
 
 class jogoTest {
-	
+
 	private Jogo jogo;
-	
+
 	@Before
 	public void novoJogo() {
 		jogo = new Jogo();
@@ -16,24 +16,24 @@ class jogoTest {
 	public void criarJogo() {
 		novoJogo();
 		assertFalse("O Jogo iniciou finalizado", jogo.acabou());
-		
+
 	}
-	
+
 	@Test
 	public void definirPrimeiroJogador() {
 		novoJogo();
 		jogo.setMarcaPrimeiroJogadorX(true);
 		assertTrue(jogo.isMarcaPrimeiroJogadorX());
 	}
-	
+
 	@Test
 	public void definirPrimeiroJogadorDeNovo() {
 		novoJogo();
-		jogo.setMarcaPrimeiroJogadorX(true); //x
-		jogo.setMarcaPrimeiroJogadorX(false); //o
+		jogo.setMarcaPrimeiroJogadorX(true); // x
+		jogo.setMarcaPrimeiroJogadorX(false); // o
 		assertFalse(jogo.isMarcaPrimeiroJogadorX());
 	}
-	
+
 	@Test
 	public void desenharPrimeiraMarca() {
 		novoJogo();
@@ -41,24 +41,32 @@ class jogoTest {
 		jogo.desenharMarca(1, 0);
 		assertTrue(jogo.isMarcaXNaPosicao(1, 0));
 	}
-	
-	@Test(expected=ExcecaoJogoDaVelha.class)
+
+	@Test(expected = ExcecaoJogoDaVelha.class)
 	public void desenharMarcaEmUmaCelulaOcupada() {
 		jogo.setMarcaPrimeiroJogadorX(true);
 		jogo.desenharMarca(1, 0);
-	    jogo.desenharMarca(1, 0);
+		jogo.desenharMarca(1, 0);
 	}
-	
-	@Test(expected=ExcecaoJogoDaVelha.class)
+
+	@Test(expected = ExcecaoJogoDaVelha.class)
 	public void desenharMarcaEmUmaColunaErrada() {
 		jogo.setMarcaPrimeiroJogadorX(false);
 		jogo.desenharMarca(1, 4);
 	}
-	
-	@Test(expected=ExcecaoJogoDaVelha.class)
+
+	@Test(expected = ExcecaoJogoDaVelha.class)
 	public void desenharMarcaEmUmaLinhaErrada() {
-		jogo.setMarcaPrimeiroJogadorX(true);
+		jogo.setMarcaPrimeiroJogadorX(false);
 		jogo.desenharMarca(-1, 0);
+	}
+
+	@Test
+	public void lerMarcaDeUmaCelulaDesocupada() {
+		novoJogo();
+		jogo.setMarcaPrimeiroJogadorX(false);
+		assertNull(jogo.isMarcaXNaPosicao(0, 0));
+
 	}
 
 }
