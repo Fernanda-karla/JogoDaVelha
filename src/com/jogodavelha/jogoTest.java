@@ -87,5 +87,10 @@ class jogoTest {
 		jogo.desenharMarca(1, 0);
 		jogo.setMarcaPrimeiroJogadorX(true);
 	}
+	
+	@Test(expected=ExcecaoJogoDaVelha.class)
+	public void desenharMarcaAntesDeDefinirPrimeiroJogador() {
+		jogo.desenharMarca(1, 0);
+	}
 
 }
