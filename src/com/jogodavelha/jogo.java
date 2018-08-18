@@ -18,6 +18,14 @@ public class Jogo {
 	}
 
 	public void desenharMarca(int linha, int coluna) {
+		verificarLimites(linha, coluna);
+		if(tabuleiro[linha][coluna] != null) {
+			lancarExcecao();
+		}
+		tabuleiro[linha][coluna] = marcaPrimeiroJogadorX;
+	}
+
+	private void verificarLimites(int linha, int coluna) {
 		if(coluna < 0 || coluna > 2) {
 			lancarExcecao();
 		}
@@ -25,10 +33,6 @@ public class Jogo {
 		if(linha < 0 || linha > 2) {
 			lancarExcecao();
 		}
-		if(tabuleiro[linha][coluna] != null) {
-			lancarExcecao();
-		}
-		tabuleiro[linha][coluna] = marcaPrimeiroJogadorX;
 	}
 
 	private void lancarExcecao() {
@@ -36,6 +40,7 @@ public class Jogo {
 	}
 
 	public Boolean isMarcaXNaPosicao(int linha, int coluna) {
+		verificarLimites(linha, coluna);
 		return tabuleiro[linha][coluna];
 	}
 	

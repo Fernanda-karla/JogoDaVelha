@@ -68,5 +68,17 @@ class jogoTest {
 		assertNull(jogo.isMarcaXNaPosicao(0, 0));
 
 	}
+	
+	@Test(expected=ExcecaoJogoDaVelha.class)
+	public void lerMarcaDeUmaColunaErrada() {
+		jogo.setMarcaPrimeiroJogadorX(true);
+		jogo.isMarcaXNaPosicao(1, 3);
+	}
+	
+	@Test(expected=ExcecaoJogoDaVelha.class)
+	public void lerMarcaDeUmaLinhaErrada() {
+		jogo.setMarcaPrimeiroJogadorX(true);
+		jogo.isMarcaXNaPosicao(-1, 1);
+	}
 
 }
